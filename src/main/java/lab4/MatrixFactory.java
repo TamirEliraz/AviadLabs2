@@ -25,7 +25,7 @@ public class MatrixFactory<T> {
         Class<?> c;
         Matrix<T> matrix = null;
         try {
-            c = Class.forName("SparseMatrix");
+            c = Class.forName("lab4.SparseMatrix");
             try {
                 Constructor<?>[] constructors = c.getConstructors();
                 for (Constructor<?> cons : constructors) {
