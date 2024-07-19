@@ -1,3 +1,5 @@
+package lab4;
+
 public interface Matrix<T> {
     
     int MAX_SIZE = 100;

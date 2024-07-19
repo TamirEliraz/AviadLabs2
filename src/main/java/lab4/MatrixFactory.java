@@ -1,3 +1,5 @@
+package lab4;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -5,7 +7,7 @@ public class MatrixFactory<T> {
     
     /**
      * @param defaultVal
-     * @return an instance of Matrix<T> by applying the constructor with on
+     * @return an instance of lab4.Matrix<T> by applying the constructor with on
      *         parameter (T defaultVal)
      */
     public Matrix<T> getMatrix(T defaultVal) {
@@ -15,7 +17,7 @@ public class MatrixFactory<T> {
     /**
      * @param size
      * @param defaultVal
-     * @return an instance of Matrix<T> by applying the constructor with two
+     * @return an instance of lab4.Matrix<T> by applying the constructor with two
      *         parameters (ins size, T defaultVal)
      */
     @SuppressWarnings("unchecked")

@@ -1,3 +1,5 @@
+package lab4;
+
 public interface List<T> {
     
     /**
@@ -36,7 +38,7 @@ public interface List<T> {
     public void clear();
     
     /**
-     * Precondition: List is not empty and newElement is not null.
+     * Precondition: lab4.List is not empty and newElement is not null.
      * Postcondition: Replaces the element marked by the cursor with newElement. The
      * cursor remains at newElement
      */
