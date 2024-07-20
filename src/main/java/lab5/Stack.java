@@ -1,4 +1,4 @@
-package lab5;
+package lab5; // package il.ac.telhai.ds.stack;
 
 public interface Stack<T> {
     public void push(T t);
