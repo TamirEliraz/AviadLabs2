@@ -4,8 +4,6 @@ import lab3.DLinkedList;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Map;
-
 @Getter
 @Setter
 public class SparseMatrix<T> implements Matrix<T> {
