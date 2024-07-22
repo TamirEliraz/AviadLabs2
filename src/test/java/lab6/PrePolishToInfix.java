@@ -2,6 +2,7 @@ package lab6;
 import java.io.*;
 
 public class PrePolishToInfix {
+    // + 2 3
     
     public static void main(String[] args) throws IOException {
         StreamTokenizer tokenizer = new StreamTokenizer(new InputStreamReader(System.in));
@@ -11,7 +12,7 @@ public class PrePolishToInfix {
         System.out.println("Infix: " + expr.infix());
         System.out.println("Prefix: " + expr.prefix());
         System.out.println("Value: " + expr.evaluate());
-        System.out.println("Height: " + expr.height());
+        System.out.println("Heigt: " + expr.height());
         System.out.println("Size: " + expr.size());
         System.out.println("IsLeaf: " + expr.isLeaf());
     }

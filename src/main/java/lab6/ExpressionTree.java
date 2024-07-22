@@ -1,13 +1,64 @@
 package lab6;
 
+import java.io.IOException;
 import java.io.StreamTokenizer;
 
+import static java.io.StreamTokenizer.TT_EOF;
+import static java.io.StreamTokenizer.TT_NUMBER;
+
 public class ExpressionTree extends FullBinaryTree<String> {
-    public static ExpressionTree createTree(StreamTokenizer tokenizer) { return null; }
+    public ExpressionTree(String value) {
+        this(value, null, null);
+    }
     
-    public String infix() { return null; }
+    public ExpressionTree(String value, ExpressionTree right, ExpressionTree left) {
+        super(value, right, left);
+    }
     
-    public String prefix() { return null; }
+    private static final char[] OPERATORS = new char[]{ '+', '-', '*', '/' };
     
-    public String evaluate() { return null; }
+    /**
+     * Read the stream tokenizer until EOF and construct
+     * the expression tree corresponding to it.
+     * The input contains a prefix expression.
+     */
+    public static ExpressionTree createTree(StreamTokenizer tokenizer) throws IOException {
+        while (tokenizer.nextToken() == TT_EOF) {
+            if (tokenizer.ttype == TT_NUMBER) {
+                return new ExpressionTree(String.valueOf((int) tokenizer.nval));
+            } else {
+                for (char operator : OPERATORS) {
+                    if (tokenizer.ttype == operator) {
+                        return new ExpressionTree(String.valueOf((char) operator),
+                                createTree(tokenizer),
+                                createTree(tokenizer));
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * @return the infix expression corresponding to the current tree (*)
+     */
+    public String infix() {
+        return "";
+    }
+    
+    /**
+     * @return the prefix expression corresponding to the current tree (*)
+     */
+    public String prefix() {
+        return "";
+    }
+    
+    /**
+     * Evaluates the expression corresponding to the current tree.
+     *
+     * @return its value
+     */
+    public double evaluate() {
+        return 0;
+    }
 }

@@ -1,4 +1,5 @@
 package lab6;
+
 public interface BinaryTreeI<T> {
     
     /**
@@ -17,20 +18,17 @@ public interface BinaryTreeI<T> {
     public T getValue();
     
     /**
-     * @param value
-     *            set the value in the root
+     * @param value set the value in the root
      */
     public void setValue(T value);
     
     /**
-     * @param left
-     *            set the left subtree
+     * @param left set the left subtree
      */
     public void setLeft(BinaryTreeI<T> left);
     
     /**
-     * @param right
-     *            set the right subtree
+     * @param right set the right subtree
      */
     public void setRight(BinaryTreeI<T> right);
     
@@ -41,7 +39,7 @@ public interface BinaryTreeI<T> {
     
     /**
      * @return the height of the tree, i.e. the length of a longest path starting
-     *         from the root.
+     * from the root.
      */
     public int height();
     
@@ -56,47 +54,57 @@ public interface BinaryTreeI<T> {
     public void clear();
     
     /**
+     * CENTER, LEFT, RIGHT
+     *
      * @return the concatenation of the string representations of the data values in
-     *         the tree traversed in preorder fashion, where adding a " " before and
-     *         a " " after each value in the tree.
+     * the tree traversed in preorder fashion, where adding a " " before and
+     * a " " after each value in the tree.
      */
     public String preOrder();
     
     /**
+     * CENTER, LEFT, RIGHT
+     *
      * @return the concatenation of the string representations of the data values in
-     *         the tree traversed in preorder fashion, where adding a
-     *         "separationBeforeVal" before each value and a
-     *         "separationAfterVal" after each value in the tree.
+     * the tree traversed in preorder fashion, where adding a
+     * "separationBeforeVal" before each value and a
+     * "separationAfterVal" after each value in the tree.
      */
     public String preOrder(String separationBeforeVal, String separationAfterVal);
     
     /**
+     * LEFT, CENTER, RIGHT
+     *
      * @return the concatenation of the string representations of the data values in
-     *         the tree traversed in inorder fashion, where adding a " " before and
-     *         a " " after each value in the tree.
+     * the tree traversed in inorder fashion, where adding a " " before and
+     * a " " after each value in the tree.
      */
     public String inOrder();
     
     /**
+     * LEFT, CENTER, RIGHT
+     *
      * @return the concatenation of the string representations of the data values in
-     *         the tree traversed in inorder fashion, where adding a
-     *         "separationBeforeVal" before each value and a
-     *         "separationAfterVal" after each value in the tree.
+     * the tree traversed in inorder fashion, where adding a
+     * "separationBeforeVal" before each value and a
+     * "separationAfterVal" after each value in the tree.
      */
     public String inOrder(String separationBeforeVal, String separationAfterVal);
     
     /**
+     * LEFT, RIGHT, CENTER
      * @return the concatenation of the string representations of the data values in
-     *         the tree traversed in postorder fashion, where adding a " " before
-     *         and a " " after each value in the tree.
+     * the tree traversed in postorder fashion, where adding a " " before
+     * and a " " after each value in the tree.
      */
     public String postOrder();
     
     /**
+     * LEFT, RIGHT, CENTER
      * @return the concatenation of the string representations of the data values in
-     *         the tree traversed in postorder fashion, where adding a
-     *         "separationBeforeVal" before each value and a
-     *         "separationAfterVal" after each value in the tree.
+     * the tree traversed in postorder fashion, where adding a
+     * "separationBeforeVal" before each value and a
+     * "separationAfterVal" after each value in the tree.
      */
     public String postOrder(String separationBeforeVal, String separationAfterVal);
     
