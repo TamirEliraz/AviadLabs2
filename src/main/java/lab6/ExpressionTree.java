@@ -3,8 +3,7 @@ package lab6;
 import java.io.IOException;
 import java.io.StreamTokenizer;
 
-import static java.io.StreamTokenizer.TT_EOF;
-import static java.io.StreamTokenizer.TT_NUMBER;
+import static java.io.StreamTokenizer.*;
 
 public class ExpressionTree extends FullBinaryTree<String> {
     public ExpressionTree(String value) {
@@ -23,20 +22,24 @@ public class ExpressionTree extends FullBinaryTree<String> {
      * The input contains a prefix expression.
      */
     public static ExpressionTree createTree(StreamTokenizer tokenizer) throws IOException {
-        while (tokenizer.nextToken() == TT_EOF) {
-            if (tokenizer.ttype == TT_NUMBER) {
-                return new ExpressionTree(String.valueOf((int) tokenizer.nval));
-            } else {
-                for (char operator : OPERATORS) {
-                    if (tokenizer.ttype == operator) {
-                        return new ExpressionTree(String.valueOf((char) operator),
-                                createTree(tokenizer),
-                                createTree(tokenizer));
-                    }
+        if (tokenizer.nextToken() == TT_EOF) {
+            return null;
+        } else if (tokenizer.ttype == TT_NUMBER) {
+            return new ExpressionTree(String.valueOf((int) tokenizer.nval));
+        } else if (tokenizer.ttype == TT_WORD && tokenizer.sval.equals("–")) {
+            return new ExpressionTree("-",
+                    createTree(tokenizer),
+                    createTree(tokenizer));
+        } else {
+            for (char operator : OPERATORS) {
+                if (tokenizer.ttype == operator) {
+                    return new ExpressionTree(String.valueOf((char) operator),
+                            createTree(tokenizer),
+                            createTree(tokenizer));
                 }
             }
         }
-        return null;
+        throw new RuntimeException("???????");
     }
     
     /**

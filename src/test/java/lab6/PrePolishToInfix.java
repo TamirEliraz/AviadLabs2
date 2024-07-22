@@ -3,6 +3,7 @@ import java.io.*;
 
 public class PrePolishToInfix {
     // + 2 3
+    // * + 1 3 - 6 4
     
     public static void main(String[] args) throws IOException {
         StreamTokenizer tokenizer = new StreamTokenizer(new InputStreamReader(System.in));
