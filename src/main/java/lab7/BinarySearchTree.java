@@ -17,13 +17,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
             left = null;
             right = null;
         }
+        
+        @Override
+        public String toString() {
+            return "BstNode{" +
+                    "val=" + val +
+                    '}';
+        }
     }
     
     public enum Direction {
         LEFT, RIGHT
     }
     
-    // struct
+    /**
+     * record-like class (struct) that contains parent, cursor and the direction (what child is cursor to parent)
+     */
     private class BstNode2 {
         public final BstNode parent, cursor;
         public final Direction direction;
@@ -87,6 +96,18 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return true;
     }
     
+    /**
+     * Search for a value.
+     *
+     * @param val
+     *         of type {@link T T}
+     * @return If the tree is empty (root==null), then return null.
+     * if the tree contains val, then return a {@link BstNode2 BstNode2} where "cursor" is a {@link BstNode BstNode}
+     * with the value val, "parent" is
+     * its parent and "direction" is a {@link Direction Direction} to what child is cursor.
+     * if the tree does not contain val, then return a BstNode2 where "cursor" is what would be the "parent" of the
+     * BstNode that contains the value val.
+     */
     private BstNode2 find(T val) {
         if (size() == 0) { return null; }
         BstNode cursor = root;
@@ -170,22 +191,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return res != null && res.cursor.val.compareTo(val) == 0;
     }
     
-    private T findGe(T val, boolean isPrivate) {
-        BstNode2 res = find(val);
-        if (res == null) return null; // empty tree
-        if (!isPrivate && res.cursor.val.compareTo(val) == 0) return val; // find it
-        if (res.cursor.val.compareTo(val) > 0) {
-            if (res.cursor.right == null) return res.cursor.val;
-            BstNode temp = res.cursor.right;
-            while (temp.left != null) {
-                temp = temp.left;
-            }
-            return temp.val;
-        }
-        if(res.parent == null) return res.cursor.val;
-        return findGe(res.parent.val, true);
-    }
-    
     /**
      * Looks for the minimal object in the tree, which is greater than or equal to
      * the parameter.
@@ -195,7 +200,23 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return a reference to the found object.
      */
     public T findGe(T val) {
-        return findGe(val, false);
+        BstNode2 temp = find(val);
+        if (temp == null) return null;
+        if (temp.cursor.val.compareTo(val) == 0) return val;
+        while (temp != null && temp.direction != Direction.LEFT && temp.parent != null) {
+            temp = find(temp.parent.val);
+        }
+        if (temp == null || ( temp.parent == null && ( temp.direction == null || temp.direction == Direction.RIGHT ) ))
+            return null;
+        if (temp.cursor.val.compareTo(val) > 0) return temp.cursor.val;
+        BstNode temp2 = temp.parent;
+        if (temp2 == null) return null;
+        if (temp2.right != null) {
+            temp2 = temp2.right;
+            while (temp2.left != null) temp2 = temp2.left;
+        }
+        if (temp2.val.compareTo(val) > 0) return temp2.val;
+        return null;
     }
     
     @Override

@@ -13,7 +13,7 @@ public class TestBinarySearchTreeInteger {
     private BinarySearchTree<Integer> searchTree;
     BinarySearchTree<Integer> small;
     BinarySearchTree<Integer> big;
-
+    
     @Before
     public void setUp() throws Exception {
         searchTree = new BinarySearchTree<Integer>();
@@ -21,8 +21,8 @@ public class TestBinarySearchTreeInteger {
         searchTree.add(10);
         searchTree.add(20);
     }
-
-
+    
+    
     @Test
     public void testTree() {
         BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
@@ -32,26 +32,30 @@ public class TestBinarySearchTreeInteger {
         tree.add(3);
         tree.add(6);
         tree.add(1);
-
+        
         assertEquals(6, tree.size());
         assertTrue(tree.contains(3));
         tree.remove(3);
         assertFalse(tree.contains(3));
-
-
+        assertEquals(5, tree.size());
+        
         assertEquals(tree.findGe(3), Integer.valueOf(4));
-
+        
         tree.remove(4);
         tree.remove(5);
         tree.add(3);
-        assertEquals(tree.findGe(4), Integer.valueOf(6));
-
+        assertEquals(4, tree.size());
+        
+        assertEquals(Integer.valueOf(6), tree.findGe(4));
+        
         tree.add(4);
-        assertEquals(tree.findGe(4), Integer.valueOf(4));
+        assertEquals(5, tree.size());
+        
+        assertEquals(Integer.valueOf(4), tree.findGe(4));
         assertEquals(tree.findGe(5), Integer.valueOf(6));
-
+        
         assertEquals(tree.findGe(0), Integer.valueOf(1));
-
+        
         assertNull(tree.findGe(7));
     }
 }
