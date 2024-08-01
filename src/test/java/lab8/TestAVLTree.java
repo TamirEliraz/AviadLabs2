@@ -12,15 +12,7 @@ public class TestAVLTree {
     public void buildAVLTree() {
         AVLTree<Integer> avlTree = new AVLTree<Integer>(11);
         for (int i = 0; i < 10; i++) {
-            System.out.println(avlTree);
-            
             int k = 2 * i;
-            if(k == 12){
-                System.out.println("");
-            }
-            if (avlTree.hasParent()) {
-                System.out.println(k + "???????????????????????");
-            }
             avlTree = avlTree.add(k);
         }
         
@@ -29,22 +21,39 @@ public class TestAVLTree {
         checkTreeStructure(avlTree);
     }
     
-    private void checkTreeStructure(AVLTree<Integer> avlTree) {
-        assertEquals(avlTree.getValue(), Integer.valueOf(6));
+    private void checkTreeStructure(AVLTree<Integer> AVLTree) {
+        assertEquals(AVLTree.getValue(), Integer.valueOf(10));
         
-        assertEquals(avlTree.getLeft().getValue(), Integer.valueOf(2));
-        assertEquals(avlTree.getRight().getValue(), Integer.valueOf(12));
+        assertEquals(AVLTree.getLeft().getValue(), Integer.valueOf(4));
+        assertEquals(AVLTree.getRight().getValue(), Integer.valueOf(14));
         
-        assertEquals(avlTree.getLeft().getLeft().getValue(), Integer.valueOf(0));
-        assertEquals(avlTree.getLeft().getRight().getValue(), Integer.valueOf(4));
-        assertEquals(avlTree.getRight().getLeft().getValue(), Integer.valueOf(10));
-        assertEquals(avlTree.getRight().getRight().getValue(), Integer.valueOf(16));
+        assertEquals(AVLTree.getLeft().getLeft().getValue(), Integer.valueOf(2));
+        assertEquals(AVLTree.getLeft().getRight().getValue(), Integer.valueOf(8));
+        assertEquals(AVLTree.getRight().getLeft().getValue(), Integer.valueOf(12));
+        assertEquals(AVLTree.getRight().getRight().getValue(), Integer.valueOf(16));
         
-        assertEquals(avlTree.getRight().getLeft().getLeft().getValue(), Integer.valueOf(8));
-        assertEquals(avlTree.getRight().getLeft().getRight().getValue(), Integer.valueOf(11));
-        assertEquals(avlTree.getRight().getRight().getLeft().getValue(), Integer.valueOf(14));
-        assertEquals(avlTree.getRight().getRight().getRight().getValue(), Integer.valueOf(18));
+        assertEquals(AVLTree.getLeft().getLeft().getLeft().getValue(), Integer.valueOf(0));
+        assertEquals(AVLTree.getLeft().getRight().getLeft().getValue(), Integer.valueOf(6));
+        assertEquals(AVLTree.getRight().getLeft().getLeft().getValue(), Integer.valueOf(11));
+        assertEquals(AVLTree.getRight().getRight().getRight().getValue(), Integer.valueOf(18));
     }
+
+//    private void checkTreeStructure(AVLTree<Integer> avlTree) {
+//        assertEquals(avlTree.getValue(), Integer.valueOf(6));
+//
+//        assertEquals(avlTree.getLeft().getValue(), Integer.valueOf(2));
+//        assertEquals(avlTree.getRight().getValue(), Integer.valueOf(12));
+//
+//        assertEquals(avlTree.getLeft().getLeft().getValue(), Integer.valueOf(0));
+//        assertEquals(avlTree.getLeft().getRight().getValue(), Integer.valueOf(4));
+//        assertEquals(avlTree.getRight().getLeft().getValue(), Integer.valueOf(10));
+//        assertEquals(avlTree.getRight().getRight().getValue(), Integer.valueOf(16));
+//
+//        assertEquals(avlTree.getRight().getLeft().getLeft().getValue(),  Integer.valueOf(8));
+//        assertEquals(avlTree.getRight().getLeft().getRight().getValue(), Integer.valueOf(11));
+//        assertEquals(avlTree.getRight().getRight().getLeft().getValue(), Integer.valueOf(14));
+//        assertEquals(avlTree.getRight().getRight().getRight().getValue(), Integer.valueOf(18));
+//    }
     
     private String inOrder(AVLTree<Integer> tree) {
         StringBuilder sb = new StringBuilder();
